@@ -39,7 +39,7 @@ const createEmbedding = async (
         work_title: title,
         work_author: author,
         work_content: content,
-        work_references: "Thus spoke Zarathustra by Friedrich Nietzsche.",
+        work_references: "Understanding Objectivism:A Guide to Learning Ayn Rand's Philosophy by Leonard Peikoff.",
         embeddings: embedding1,
       })
       .select("*");
@@ -60,7 +60,7 @@ const createEmbedding = async (
         work_title: title,
         work_author: author,
         work_content: content,
-        work_references: "Beyond Good and Evil by Freidrich Nietzsche.",
+        work_references: "Understanding Objectivism:A Guide to Learning Ayn Rand's Philosophy by Leonard Peikoff.",
         embeddings: embedding2,
       })
       .select("*");
@@ -84,7 +84,7 @@ const createEmbedding = async (
       work_title: title,
       work_author: author,
       work_content: content,
-      work_references: "The Gay Science by Friedrich Nietzsche.",
+      work_references: "Understanding Objectivism:A Guide to Learning Ayn Rand's Philosophy by Leonard Peikoff.",
       embeddings: embedding,
     })
     .select("*");
@@ -96,7 +96,7 @@ const createEmbedding = async (
 };
 
 export const createEmbeddings = async () => {
-  const loader = new PDFLoader("public/docs/nie3.pdf", {
+  const loader = new PDFLoader("public/docs/ayn_rand.pdf", {
     parsedItemSeparator: "",
     splitPages: false,
   });
@@ -110,8 +110,8 @@ export const createEmbeddings = async () => {
   const output = await splitter.createDocuments([docs[0].pageContent]);
   for (let i = 0; i < output.length; i++) {
     await createEmbedding(
-      "The Gay Science: Nietzsche's Exploration of Joy, Truth, and Eternal Recurrence",
-      "Friedrich Nietzsche",
+      "Understanding Objectivism by Ayn Rand",
+      "Ayn Rand",
       output[i].pageContent,
       i
     );
